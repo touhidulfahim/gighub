@@ -33,6 +33,7 @@ namespace GighubApp.Controllers
 
         
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddGigs(GigViewModel viewModel)
         {
             if (ModelState.IsValid)
