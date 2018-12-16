@@ -20,6 +20,7 @@ namespace GighubApp.Controllers
         }
 
 
+
        [HttpGet]
         public ActionResult AddGigs()
         {
@@ -34,16 +35,20 @@ namespace GighubApp.Controllers
         [HttpPost]
         public ActionResult AddGigs(GigViewModel viewModel)
         {
+            if (ModelState.IsValid)
+            {
+                viewModel.Genres = _context.Genres.ToList();
+            }
             var gig = new Gig
             {
                 ArtistId = User.Identity.GetUserId(),
-                GigDate = viewModel.DateTime,
+                GigDate = viewModel.GetDateTime(),
                 GenreId = viewModel.Genre,
                 Venue = viewModel.Venue
             };
             _context.Gigs.Add(gig);
             _context.SaveChanges();
-            return RedirectToAction("ViewAllGigs");
+            return RedirectToAction("Index","Home");
         }
     }
 }
