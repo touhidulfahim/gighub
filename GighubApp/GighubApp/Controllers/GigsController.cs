@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,6 +18,25 @@ namespace GighubApp.Controllers
         public GigsController()
         {
             _context=new ApplicationDbContext();
+        }
+
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+            var gigs = _context.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Select(a => a.Gig)
+                .Include(g=>g.Artist)
+                .Include(g=>g.Genre)
+                .ToList();
+
+            var viewModel = new GigsViewModel
+            {
+                UpcomingGig = gigs,
+                ShowActions = User.Identity.IsAuthenticated,
+                Heading="Gigs I am Attending"
+            };
+            return View("Gigs", viewModel);
         }
 
 
