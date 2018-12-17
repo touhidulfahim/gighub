@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Web.Mvc;
 using GighubApp.Models;
+using GighubApp.ViewModels;
 
 namespace GighubApp.Controllers
 {
-    [Authorize]
+    
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,7 +23,14 @@ namespace GighubApp.Controllers
                 .Include(g => g.Artist)
                 .Include(g=>g.Genre)
                 .Where(g => g.GigDate > DateTime.Now);
-            return View(upcominggig);
+
+            var viewModel = new HomeViewModel
+            {
+                UpcomingGig = upcominggig,
+                ShowActions = User.Identity.IsAuthenticated
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult About()
