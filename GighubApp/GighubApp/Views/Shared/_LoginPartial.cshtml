@@ -8,12 +8,12 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               @User.Identity.GetUserName()<i class="fa fa-chevron-down" aria-hidden="true"></i>
+               @User.Identity.GetUserName()<span class="caret"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Activities</a></li>
+                <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
             </ul>
         </li>
     </ul>

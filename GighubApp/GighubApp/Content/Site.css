@@ -28,6 +28,11 @@ textarea {
 body {
     font-size: 17px;
 }
+
+label {
+  display: inline-block;
+  margin-bottom: 5px
+}
 .navbar-inverse {
     background-color: #37474F;
     border-color: #37474F;
@@ -54,3 +59,4 @@ body {
     color: #ffffff;
     background-color: #37474F;
 }
+
