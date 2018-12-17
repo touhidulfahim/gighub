@@ -4,8 +4,26 @@
 }
 
 <p class="alert alert-info">Upcoming Gig</p>
-
-@foreach (var gig in Model)
-{
-    <li>@gig.GigDate-@gig.Artist.Name</li>
-}
+<ul class="gigs">
+    @foreach (var gig in Model)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @gig.GigDate.ToString("MMM")
+                </div>
+                <div class="day">
+                    @gig.GigDate.ToString("dd")
+                </div>
+            </div>
+            <div class="details">
+                <div class="artist">
+                    @gig.Artist.Name
+                </div>
+                <div class="genre">
+                    @gig.Genre.GenreName
+                </div>
+            </div>
+        </li>
+    }
+</ul>

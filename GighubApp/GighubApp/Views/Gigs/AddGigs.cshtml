@@ -12,28 +12,28 @@
     <div class="form-group">
         <div class="col-sm-12">
             @Html.LabelFor(model => model.Venue)
-            @Html.TextBoxFor(model => model.Venue, new { @class = "form-control", @autofocus="autofocus"})
+            @Html.TextBoxFor(model => model.Venue, new { @class = "form-control input-lg", @autofocus="autofocus"})
             @Html.ValidationMessageFor(model => model.Venue, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
             @Html.LabelFor(model => model.Date)
-            @Html.TextBoxFor(model => model.Date, new { @class = "form-control",placeholder = " eg 1 jan 2019" })
+            @Html.TextBoxFor(model => model.Date, new { @class = "form-control input-lg", @type="date"})
             @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger"})
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
             @Html.LabelFor(model => model.Time)
-            @Html.TextBoxFor(model => model.Time, new {@class="form-control", placeholder = " eg 20:00" })
+            @Html.TextBoxFor(model => model.Time, new {@class= "form-control input-lg", placeholder = " eg 20:00" })
            @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-12">
             @Html.LabelFor(model => model.Genre)
-            @Html.DropDownListFor(model => model.Genre, new SelectList(Model.Genres, "GenreId", "GenreName"), new {@class = "form-control"})
+            @Html.DropDownListFor(model => model.Genre, new SelectList(Model.Genres, "GenreId", "GenreName"), new {@class= "form-control input-lg" })
             @Html.ValidationMessageFor(model => model.Genre,"", new {@class="text-danger"})
         </div>
     </div>

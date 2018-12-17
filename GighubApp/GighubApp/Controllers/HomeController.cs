@@ -21,6 +21,7 @@ namespace GighubApp.Controllers
         {
             var upcominggig = _context.Gigs
                 .Include(g => g.Artist)
+                .Include(g=>g.Genre)
                 .Where(g => g.GigDate > DateTime.Now);
             return View(upcominggig);
         }
