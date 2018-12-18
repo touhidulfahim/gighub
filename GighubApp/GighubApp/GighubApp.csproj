@@ -256,6 +256,10 @@
     <Compile Include="Migrations\201812181835352_addNewFieldInGig.Designer.cs">
       <DependentUpon>201812181835352_addNewFieldInGig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812182237357_addNotification.cs" />
+    <Compile Include="Migrations\201812182237357_addNotification.Designer.cs">
+      <DependentUpon>201812182237357_addNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -265,6 +269,9 @@
     <Compile Include="Models\Gig.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\NotificationType.cs" />
+    <Compile Include="Models\UserNotification.cs" />
     <Compile Include="Models\ValidTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -402,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812181835352_addNewFieldInGig.resx">
       <DependentUpon>201812181835352_addNewFieldInGig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812182237357_addNotification.resx">
+      <DependentUpon>201812182237357_addNotification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
