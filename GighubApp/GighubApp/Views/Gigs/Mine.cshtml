@@ -28,13 +28,54 @@
                     <span>
                         @gig.Genre.GenreName
                     </span>
-                    <div class="action">
-                        <a href="@Url.Action("EditGigs", "Gigs", new { id = gig.GigId })">
-                        Edit
-                        </a>
+                    <div class="acton" >
+                        <a href="@Url.Action("EditGigs", "Gigs", new {id = gig.GigId})">Edit</a>&nbsp;<a href="#" class="js-cancel-gig" data-gig-id="@gig.GigId">Cancel</a>
                     </div>
                 </div>
             </div>
         </li>
     }
 </ul>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-cancel-gig").click(function (e) {
+                var link = $(e.target);
+                bootbox.dialog({
+                    title: 'Confirm',
+                    message: "Are you sure want to cancel this gig?",
+                    size:'small',
+                    buttons: {
+                        cancel: {
+                            label: "No",
+                            className: 'btn-default',
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        ok: {
+                            label: "Yes",
+                            className: 'btn-danger',
+                            callback: function () {
+                                $.ajax({
+                                    url: "/api/gigs/" + link.attr("data-gig-id"),
+                                    method: "DELETE"
+                                })
+                        .done(function () {
+                            link.parents("li").fadeOut(function () {
+                                $(this).remove();
+                            });
+                        })
+                        .fail(function () {
+                            alert("Something wrong!");
+                        });
+                            }
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+}

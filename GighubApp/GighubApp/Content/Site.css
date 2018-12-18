@@ -98,10 +98,9 @@ label {
 .gigs > li .details .artist{
     font-weight: bold;   
 }
-.gigs > li .action a {
+/*.gigs > li .acton a {
     display: none;
-    font-size: 15px;
 }
-.gigs > li:hover .action a {
+.gigs > li:hover .acton a {
     display: block;
-}
+}*/

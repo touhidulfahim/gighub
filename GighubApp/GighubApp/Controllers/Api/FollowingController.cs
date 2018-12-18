@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using GighubApp.Dtos;
 using GighubApp.Models;
 using Microsoft.AspNet.Identity;
 
-namespace GighubApp.Controllers
+namespace GighubApp.Controllers.Api
 {
     [Authorize]
     public class FollowingController : ApiController
