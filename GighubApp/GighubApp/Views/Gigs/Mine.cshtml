@@ -5,8 +5,8 @@
 }
 
 
-<ul class="gigs voffset3">
-    
+<ul class="gigs voffset4">
+
     @foreach (var gig in Model)
     {
         <li>
@@ -28,6 +28,11 @@
                     <span>
                         @gig.Genre.GenreName
                     </span>
+                    <div class="action">
+                        <a href="@Url.Action("EditGigs", "Gigs", new { id = gig.GigId })">
+                        Edit
+                        </a>
+                    </div>
                 </div>
             </div>
         </li>
