@@ -3,21 +3,27 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-            <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               @User.Identity.GetUserName()<span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="@Url.Action("Mine","Gigs")">My Upcoming Gigs</a></li>
-                <li><a class="dropdown-item" href="@Url.Action("Attending","Gigs")">Gig I am Going</a></li>
-                <li><a class="dropdown-item" href="#">Activities</a></li>
-                <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-            </ul>
-        </li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="notifications">
+                <a href="#">
+                    <i class="glyphicon glyphicon-bell"></i>
+                    <span class="badge js-notification-count hide"></span>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @User.Identity.GetUserName()<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="@Url.Action("Mine", "Gigs")">My Upcoming Gigs</a></li>
+                    <li><a class="dropdown-item" href="@Url.Action("Attending", "Gigs")">Gig I am Going</a></li>
+                    <li><a class="dropdown-item" href="#">Activities</a></li>
+                    <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                </ul>
+            </li>
+        </ul>
     }
 }
 else
@@ -27,3 +33,23 @@ else
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+    $(document).ready(function () {
+        $.getJSON("/api/notifications", function (notifications) {
+            $(".js-notification-count")
+                .text(notifications.length)
+                .removeClass("hide")
+                .addClass("animated bounceInDown");
+        });
+        $(".notifications").popover({
+            html: true,
+            title: "Notifications",
+            content: function() {
+                return "hello";
+            },
+            placement: "bottom"
+        });
+    });
+</script>
